@@ -1,0 +1,10 @@
+npm install -g @angular/cli    
+ng new project-name
+ng serve
+ng generate component components/header
+ng generate component recipes --spec false
+
+udemy:
+ng new list-app --no-strict --standalone false --routing false
+npm install --save bootstrap@3
+ng generate component WarningAlert
