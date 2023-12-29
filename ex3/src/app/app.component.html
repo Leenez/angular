@@ -1,0 +1,5 @@
+<button (click)="togleHide()">Button</button>
+<p [ngClass]="{hidden: hideParagraph === true}">Paragraph</p>
+<p [hidden]="hideParagraph">Paragraph 2</p>
+<div *ngFor="let n of numberOfClicks"
+     [ngStyle]="{backgroundColor: n > 5 ? 'blue' : 'transparent'}">{{n}}</div>
