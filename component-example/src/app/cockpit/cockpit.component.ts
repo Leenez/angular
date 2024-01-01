@@ -17,11 +17,15 @@ export class CockpitComponent {
   ngOnInit(){}
 
   onAddServer(nameInput: HTMLInputElement) {
-    this.serverCreated.emit({serverName: nameInput.value, serverContent: this.serverContentInput.nativeElement.value})
+    this.serverCreated.emit({
+      serverName: nameInput.value, 
+      serverContent: this.serverContentInput.nativeElement.value})
   }
 
   onAddBlueprint(nameInput: HTMLInputElement) {
-    this.serverCreated.emit({serverName: nameInput.value, serverContent: this.serverContentInput.nativeElement.value})
+    this.blueprintCreated.emit({
+      serverName: nameInput.value, 
+      serverContent: this.serverContentInput.nativeElement.value})
   }
   
 
