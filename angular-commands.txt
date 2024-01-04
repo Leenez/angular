@@ -8,3 +8,4 @@ udemy:
 ng new list-app --no-strict --standalone false --routing false
 npm install --save bootstrap@3
 "node_modules/bootstrap/dist/css/bootstrap.min.css"
+ng generate directive directive-name
