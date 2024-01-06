@@ -7,10 +7,61 @@ ng generate component components/header
 ng generate component recipes --spec false
 
 udemy:
-ng new list-app --no-strict --standalone false --routing false
+ng new ex5 --no-strict --standalone false --routing false
 npm install --save bootstrap@3
 "node_modules/bootstrap/dist/css/bootstrap.min.css"
 ng generate directive directive-name
 
 CREATING SERVICE:
+
+1. Create file "some-service.service.ts":
+
+        export class SomeClass {
+            someFunction(arg: type) {
+                do something
+            }
+        }
+    
+    Add service to top of the tree so it inherits to all children (app.module.ts) @NgModule / @Component decorator:
+    
+        providers: [SomeClass]
+
+
+2. Use the service by adding it to component constructor:
+
+        constructor(private someClass: SomeClass,
+                    private otherService: OtherService) {}
+
+    Child components inherit services so you can add them as necessary:
+
+        providers: [OtherService]
+
+    Note that Otherservices are now overwritten from any higher level OtherServices injections
+
+
+3. Access the service in the component:
+
+    this.someClass.someFuction(arg)
+
+4. It's possible to import services to services, needs @Injectable decorator, can add Injectable() also just in case:
+
+    import {OtherService} from 'xxx'
+
+    @Injectable()
+    export class SomeClass {
+
+        constructor(private otherService: OtherService) {}
+
+        someFunction(arg: type) {
+            do something
+        }
+    
+        otherService.someF() {
+            do something
+        }
+    }
+
+
+
+
 
