@@ -7,7 +7,7 @@ ng generate component components/header
 ng generate component recipes --spec false
 
 udemy:
-ng new ex5 --no-strict --standalone false --routing false
+ng new routing --no-strict --standalone false --routing false
 npm install --save bootstrap@3
 "node_modules/bootstrap/dist/css/bootstrap.min.css"
 ng generate directive directive-name
@@ -60,6 +60,49 @@ CREATING SERVICE:
             do something
         }
     }
+
+ROUTING
+
+Concepts: ActivatedRoute class
+
+1. Add routes and Router to app.module.ts
+
+    const appRoutes: Routes = [
+        { path: '', component: HomeComponent },
+        { path: 'users', component: UsersComponent }
+    ]
+
+    imports: [ RouterModule.forRoot(appRoutes) ]
+
+2. Add <router-outlet></router-outlet> to app.component.html
+
+   Add routerLinks to replace href to navbar
+
+   Add styling with routerLinkActive
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" 
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+        <li role="presentation"
+            routerLinkActive="active"><a routerLink="/servers">Servers</a></li>
+        <li role="presentation"
+            routerLinkActive="active"><a routerLink="/users">Users</a></li>
+      </ul>
+
+3. Add navigation behind buttons
+
+   Add router constructor:
+
+    constructor(private router: Router) { }
+
+   Add navigation to click function:
+
+    onLoadServers() {
+    this.router.navigate(['/server']);
+    }
+
+
 
 
 
