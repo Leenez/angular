@@ -11,6 +11,9 @@ ng new routing --no-strict --standalone false --routing false
 npm install --save bootstrap@3
 "node_modules/bootstrap/dist/css/bootstrap.min.css"
 ng generate directive directive-name
+observables:
+npm install --save rxjs@6   
+npm install --save rxjs-compat
 
 CREATING SERVICE:
 
