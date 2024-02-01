@@ -1,26 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <form (ngSubmit)="onSubmit()" #signUpForm="ngForm">
         <div class="form-group">
           <label for="email">Mail address</label>
           <input 
+            required
+            email
             type="email" 
             id="email" 
             class="form-control"
             ngModel
-            name="email">
+            name="email"
+            #email="ngModel"/>
+          <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email</span>
         </div>
         <div class="form-group">
           <label for="subscription">Subscription</label>
           <select
             id="subscription"
             class="form-control"
-            ngModel
+            [ngModel]="selectedSubscription"
             name="subscription">
-            <option value="basic">Basic</option>
-            <option value="advanced" selected>Advanced</option>
-            <option value="pro">Pro</option>
+            <option *ngFor="let subscription of subscriptions"
+              [value]="subscription">{{subscription}}</option>
           </select>
         </div>
         <div>
@@ -30,8 +33,12 @@
             id="password" 
             class="form-control"
             ngModel
-            name="password">
+            name="password"
+            #password="ngModel"
+            required/>
+            <span class="help-block" *ngIf="!password.valid && password.touched">Please enter valid password</span>
         </div>
+        <p *ngIf="!signUpForm.valid && signUpForm.touched">The form is invalid</p>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
       <!-- Add a Form with the following Inputs (and Validators)
